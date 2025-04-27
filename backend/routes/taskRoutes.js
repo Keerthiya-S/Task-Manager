@@ -33,13 +33,12 @@ router.post('/', async (req, res) => {
 });
 
 // GET /tasks → Get all tasks
-// taskRoutes.js
 
 router.get('/', async (req, res) => {
   try {
     const collection = await getCollection();
-    const tasks = await collection.find().toArray(); // 🛠️ IMPORTANT
-    res.json(tasks); // ✅ send array, not object
+    const tasks = await collection.find().toArray(); 
+    res.json(tasks); 
   } catch (error) {
     console.error('Error fetching tasks:', error);
     res.status(500).json({ message: 'Error fetching tasks', error: error.message });
